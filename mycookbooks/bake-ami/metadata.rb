@@ -1,1 +1,1 @@
-name "opsworks_demo"
+name "opsworks_webserver"
