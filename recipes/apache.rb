@@ -1,18 +1,34 @@
-# Platform specific settings
-case node['platform']
-when 'redhat','centos'
-    package_name 'httpd'
+# # Platform specific settings
+# case node['platform']
+# when 'redhat','centos'
+#     package_name 'httpd'
 
-when 'ubuntu','debian'
-    package_name 'apache2'
+# when 'ubuntu','debian'
+#     package_name 'apache2'
 
-end
+# end
 
-package package_name do
-    action  :install
-end
+# package package_name do
+#     action  :install
+# end
 
-service 'httpd' do
+# service 'httpd' do
+#     action [:enable, :start]
+# end
+
+package "Install Apache" do
+    package_name value_for_platform(
+       ["redhat", "amazon"] => { "default" => "httpd" },
+       ["ubuntu"] => { "default" => "apache2" }
+    )
+ end
+
+
+service 'Start Apache' do
+    package_name value_for_platform(
+       ["redhat", "amazon"] => { "default" => "httpd" },
+       ["ubuntu"] => { "default" => "apache2" }
+    )
     action [:enable, :start]
 end
 
