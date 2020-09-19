@@ -2,14 +2,15 @@
 case node['platform']
 when 'redhat','centos'
     package_name 'httpd'
-    #action    :install
 
 when 'ubuntu','debian'
     package_name 'apache2'
-    #action :install
+
 end
 
-package package_name
+package package_name do
+    action  :install
+end
 
 service 'httpd' do
     action [:enable, :start]
