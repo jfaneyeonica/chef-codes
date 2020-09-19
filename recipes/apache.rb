@@ -25,7 +25,7 @@ package "Install Apache" do
 
 
 service 'Start Apache' do
-    package_name value_for_platform(
+    service_name value_for_platform(
        ["redhat", "amazon"] => { "default" => "httpd" },
        ["ubuntu"] => { "default" => "apache2" }
     )
