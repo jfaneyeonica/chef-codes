@@ -1,10 +1,12 @@
-case node[:platform]
+# Platform specific settings
+case node['platform']
 when 'redhat','centos'
-                package_name 'httpd'
-                action    :install
+    package_name 'httpd'
+    #action    :install
+
 when 'ubuntu','debian'
-                package_name 'apache2'
-                action :install
+    package_name 'apache2'
+    #action :install
 end
 
 package package_name
