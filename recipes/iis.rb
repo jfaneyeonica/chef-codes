@@ -12,7 +12,7 @@ powershell_script 'Install IIS' do
 #     rights :read, 'Everyone'
 #   end
 
-file 'C:/inetpub/wwwroot/index.html' do
+file "C:/inetpub/wwwroot/index.html" do
     content '<html>
     <head>
     <title> This is simple webpage </title>
